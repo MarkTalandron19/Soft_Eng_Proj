@@ -10,6 +10,19 @@ class LogInPage extends StatelessWidget {
   final bool isChild;
   final userController = TextEditingController();
   final passController = TextEditingController();
+  String userName = '';
+  String password = '';
+  double balance = 0;
+
+  Future<void> readAccount() async {
+    final docUser =
+        FirebaseFirestore.instance.collection('users').doc(passController.text);
+    docUser.get().then((value) {
+      userName = value['username'];
+      password = value['password'];
+      balance = value['balance'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +77,20 @@ class LogInPage extends StatelessWidget {
                 width: 150,
                 child: ElevatedButton(
                   onPressed: () {
-                    Account snapshot = readAccount();
+                    readAccount();
+                    Account curAcc = Account(
+                        userName: userName,
+                        password: password,
+                        balance: balance);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainMenu(account: snapshot, isChild: isChild,)));
+                            builder: (context) => MainMenu(
+                                  account: curAcc,
+                                  isChild: isChild,
+                                )));
                   },
-                  child: const Text("Sign In"),   
+                  child: const Text("Sign In"),
                 ),
               ),
               TextButton(
@@ -87,19 +107,5 @@ class LogInPage extends StatelessWidget {
         ),
       ),
     );
-  }
-  
-  Account readAccount() {
-    String userName = '';
-    String password = '';
-    double balance = 0;
-    final docUser = FirebaseFirestore.instance.collection('users').doc(passController.text);
-    docUser.get().then((value) {
-      var fields = value.data();
-      userName = fields!['username'];
-      password = fields['password'];
-      balance = fields['balance'];
-    });
-    return Account(userName: userName, password: password, balance: balance);
   }
 }
