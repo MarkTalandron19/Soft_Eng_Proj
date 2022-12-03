@@ -1,22 +1,17 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Account.dart';
 import 'SignInAs.dart';
 
-Future main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-
-  Account newAcc = Account(userName: "Tester", balance: 3000.00);
+   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Test(),
+      home: const SignInAs(),
     );
   }
 }

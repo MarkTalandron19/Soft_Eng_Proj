@@ -1,8 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import 'Account.dart';
+import 'MainMenu.dart';
+
 class LogInPage extends StatelessWidget {
-  const LogInPage({super.key});
+  LogInPage({super.key, required this.isChild});
+  final bool isChild;
+  final userController = TextEditingController();
+  final passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +38,16 @@ class LogInPage extends StatelessWidget {
               SizedBox(
                   width: 300,
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: userController,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Email or UserName"),
                   )),
               SizedBox(
                   width: 300,
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: passController,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: "Password"),
                   )),
               TextButton(
@@ -54,8 +63,14 @@ class LogInPage extends StatelessWidget {
                 height: 30,
                 width: 150,
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Sign In"),
+                  onPressed: () {
+                    Account snapshot = readAccount();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MainMenu(account: snapshot, isChild: isChild,)));
+                  },
+                  child: const Text("Sign In"),   
                 ),
               ),
               TextButton(
@@ -72,5 +87,19 @@ class LogInPage extends StatelessWidget {
         ),
       ),
     );
+  }
+  
+  Account readAccount() {
+    String userName = '';
+    String password = '';
+    double balance = 0;
+    final docUser = FirebaseFirestore.instance.collection('users').doc(passController.text);
+    docUser.get().then((value) {
+      var fields = value.data();
+      userName = fields!['username'];
+      password = fields['password'];
+      balance = fields['balance'];
+    });
+    return Account(userName: userName, password: password, balance: balance);
   }
 }

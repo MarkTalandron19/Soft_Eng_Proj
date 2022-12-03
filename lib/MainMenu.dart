@@ -3,9 +3,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
 
 class MainMenu extends StatefulWidget {
-  const MainMenu({super.key, required this.account});
+  const MainMenu({super.key, required this.account, required this.isChild});
 
   final Account account;
+  final bool isChild;
 
   @override
   State<MainMenu> createState() => _MainMenuState();
@@ -74,7 +75,7 @@ class _MainMenuState extends State<MainMenu> {
                     height: 50,
                     width: 140, 
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: !widget.isChild? () {} : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: HexColor("#481cff"),
                           shape: RoundedRectangleBorder(
@@ -193,7 +194,7 @@ class _MainMenuState extends State<MainMenu> {
                   child: Material(
                     child: Center(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: widget.isChild? () {} : null,
                         child: Column(children: const [
                           Icon(
                             Icons.smartphone,
@@ -208,7 +209,7 @@ class _MainMenuState extends State<MainMenu> {
                   child: Material(
                     child: Center(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: !widget.isChild? () {} : null,
                         child: Column(children: const [
                           Icon(
                             Icons.storefront,

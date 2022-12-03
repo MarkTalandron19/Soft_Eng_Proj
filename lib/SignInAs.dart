@@ -30,7 +30,7 @@ class SignInAs extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LogInPage()));
+                            builder: (context) => LogInPage(isChild: true)));
                   },
                   child: const Text("Child"),
                 ),
@@ -39,7 +39,12 @@ class SignInAs extends StatelessWidget {
                 height: 30,
                 width: 150,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LogInPage(isChild: false)));
+                  },
                   child: const Text("Parent"),
                 ),
               ),
