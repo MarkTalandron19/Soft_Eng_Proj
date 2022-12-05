@@ -22,6 +22,7 @@ class _MainMenuState extends State<MainMenu> {
     if (snapshot.exists) {
       return Account.fromJson(snapshot.data()!);
     }
+    return null;
   }
 
   Widget buildName(Account acc) {
@@ -40,6 +41,16 @@ class _MainMenuState extends State<MainMenu> {
         fontWeight: FontWeight.w400,
       ),
     );
+  }
+
+  Future addDeposit({required int deposit}) async {
+    final doc = FirebaseFirestore.instance.collection('users').doc(widget.password);
+
+    final json = {
+      'balance': FieldValue.increment(deposit),
+    };
+
+    await doc.update(json);
   }
 
   @override
@@ -122,7 +133,10 @@ class _MainMenuState extends State<MainMenu> {
                     height: 50,
                     width: 140,
                     child: ElevatedButton(
-                        onPressed: !widget.isChild ? () {} : null,
+                        onPressed: !widget.isChild ? () {
+                          addDeposit(deposit: 5000);
+                          setState(() {});
+                        } : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: HexColor("#481cff"),
                           shape: RoundedRectangleBorder(
