@@ -3,7 +3,7 @@ class Account {
       {required this.userName, required this.password, required this.balance});
   String userName;
   String password;
-  double balance;
+  int balance;
 
   set setName(String newName) {
     userName = newName;
@@ -13,15 +13,15 @@ class Account {
     password = newPass;
   }
 
-  set setBalance(double newBalance) {
+  set setBalance(int newBalance) {
     balance = newBalance;
   }
 
-  void addBalance(double addFunds) {
+  void addBalance(int addFunds) {
     balance += addFunds;
   }
 
-  void subtractBalance(double subtractBal) {
+  void subtractBalance(int subtractBal) {
     balance -= subtractBal;
   }
 
@@ -32,5 +32,5 @@ class Account {
 
   String get getName => userName;
   String get getPass => password;
-  double get getBalance => balance;
+  int get getBalance => balance;
 }

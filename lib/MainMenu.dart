@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
 
 class MainMenu extends StatefulWidget {
-  const MainMenu({super.key, required this.account, required this.isChild});
+  const MainMenu({super.key, required this.isChild, required this.password});
 
-  final Account account;
+  final String password;
   final bool isChild;
 
   @override
@@ -13,6 +14,34 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  Future<Account?> readUser() async {
+    final docUser =
+        FirebaseFirestore.instance.collection('users').doc(widget.password);
+    final snapshot = await docUser.get();
+
+    if (snapshot.exists) {
+      return Account.fromJson(snapshot.data()!);
+    }
+  }
+
+  Widget buildName(Account acc) {
+    return Text("Hello, ${acc.getName}!",
+        style: const TextStyle(
+          fontSize: 18,
+        ));
+  }
+
+  Widget buildBalance(Account acc) {
+    return Text(
+      '${acc.getBalance}',
+      style: const TextStyle(
+        fontSize: 34,
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,12 +52,22 @@ class _MainMenuState extends State<MainMenu> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
-              Text(
-                "Hello, ${widget.account.getName}!",
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-              ),
+              FutureBuilder<Account?>(
+                  future: readUser(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final acc = snapshot.data;
+                      return acc == null
+                          ? const Center(
+                              child: Text('No User'),
+                            )
+                          : buildName(acc);
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
             ]),
             const SizedBox(
               height: 10,
@@ -55,14 +94,22 @@ class _MainMenuState extends State<MainMenu> {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              "P${widget.account.getBalance}",
-              style: const TextStyle(
-                fontSize: 34,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+            FutureBuilder<Account?>(
+                future: readUser(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final acc = snapshot.data;
+                    return acc == null
+                        ? const Center(
+                            child: Text('No User'),
+                          )
+                        : buildBalance(acc);
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }),
             const SizedBox(
               height: 15,
             ),
@@ -73,9 +120,9 @@ class _MainMenuState extends State<MainMenu> {
                 children: [
                   SizedBox(
                     height: 50,
-                    width: 140, 
+                    width: 140,
                     child: ElevatedButton(
-                        onPressed: !widget.isChild? () {} : null,
+                        onPressed: !widget.isChild ? () {} : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: HexColor("#481cff"),
                           shape: RoundedRectangleBorder(
@@ -85,7 +132,9 @@ class _MainMenuState extends State<MainMenu> {
                         child: Row(
                           children: const [
                             Icon(Icons.credit_card),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text(
                               "Deposit",
                               style: TextStyle(
@@ -113,7 +162,9 @@ class _MainMenuState extends State<MainMenu> {
                             Icon(
                               Icons.account_balance_wallet,
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text(
                               "Vault",
                               style: TextStyle(
@@ -194,7 +245,7 @@ class _MainMenuState extends State<MainMenu> {
                   child: Material(
                     child: Center(
                       child: InkWell(
-                        onTap: widget.isChild? () {} : null,
+                        onTap: widget.isChild ? () {} : null,
                         child: Column(children: const [
                           Icon(
                             Icons.smartphone,
@@ -209,7 +260,7 @@ class _MainMenuState extends State<MainMenu> {
                   child: Material(
                     child: Center(
                       child: InkWell(
-                        onTap: !widget.isChild? () {} : null,
+                        onTap: !widget.isChild ? () {} : null,
                         child: Column(children: const [
                           Icon(
                             Icons.storefront,

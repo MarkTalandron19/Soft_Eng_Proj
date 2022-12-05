@@ -1,27 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'Account.dart';
+import 'MainMenu.dart';
 
 import 'Account.dart';
 import 'MainMenu.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
   LogInPage({super.key, required this.isChild});
   final bool isChild;
-  final userController = TextEditingController();
-  final passController = TextEditingController();
-  String userName = '';
-  String password = '';
-  double balance = 0;
 
-  Future<void> readAccount() async {
-    final docUser =
-        FirebaseFirestore.instance.collection('users').doc(passController.text);
-    docUser.get().then((value) {
-      userName = value['username'];
-      password = value['password'];
-      balance = value['balance'];
-    });
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  final userController = TextEditingController();
+
+  final passController = TextEditingController();
+
+
+  Future<Account?> readAccount() async {
+    if (passController.text.isNotEmpty) {
+      final docUser = FirebaseFirestore.instance
+          .collection('users')
+          .doc(passController.text);
+      final snapshot = await docUser.get();
+
+      if (snapshot.exists) {
+        return Account.fromJson(snapshot.data()!);
+      } else {
+        return null;
+      }
+    }
   }
 
   @override
@@ -77,18 +89,10 @@ class LogInPage extends StatelessWidget {
                 width: 150,
                 child: ElevatedButton(
                   onPressed: () {
-                    readAccount();
-                    Account curAcc = Account(
-                        userName: userName,
-                        password: password,
-                        balance: balance);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainMenu(
-                                  account: curAcc,
-                                  isChild: isChild,
-                                )));
+                            builder: (context) => MainMenu(isChild: widget.isChild, password: passController.text,)));
                   },
                   child: const Text("Sign In"),
                 ),
