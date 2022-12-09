@@ -11,7 +11,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-   const MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,33 +22,5 @@ class MyApp extends StatelessWidget {
       ),
       home: const SignInAs(),
     );
-  }
-}
-
-class Test extends StatelessWidget {
-  const Test({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          final int test = 500;
-
-          update(test: test); 
-        },
-        child: const Text("update"),
-      ),
-    );
-  }
-
-  Future update({required int test}) async {
-    final doc = FirebaseFirestore.instance.collection('Test').doc('7avQbI9Nr8WzV9WLoSQ9');
-
-    final json = {
-      'test': test,
-    };
-
-    await doc.set(json);
   }
 }
