@@ -43,10 +43,11 @@ class DepositPage extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 26.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 26.0),
                   child: SizedBox(
                     height: 65.0,
                     child: ElevatedButton(
+<<<<<<< HEAD
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -56,6 +57,17 @@ class DepositPage extends StatelessWidget {
                                       password: password,
                                     )));
                       },
+=======
+                      
+                      onPressed: () {
+                        Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Deposit(
+                                isChild: isChild,
+                                password: password,
+                              )));},
+>>>>>>> main
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: Colors.white,
@@ -63,10 +75,15 @@ class DepositPage extends StatelessWidget {
                       child: Row(
                         children: const <Widget>[
                           SizedBox(
-                            width: 138.0,
+                            width: 5.0,
                           ),
+                          Image(
+                                image: AssetImage(
+                                  'assets/dbo.png'
+                                ),
+                              ),
                           Text(
-                            "Dank Bank Organization",
+                            "  Dank Bank Organization",
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Poppins',
@@ -94,6 +111,7 @@ class DepositPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
                 ),
+
                 child: const SizedBox(
                   width: 290.0,
                   child: Text(
