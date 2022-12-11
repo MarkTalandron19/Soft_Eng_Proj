@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
+import 'depositone.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({super.key, required this.isChild, required this.password});
@@ -44,7 +45,8 @@ class _MainMenuState extends State<MainMenu> {
   }
 
   Future addDeposit({required int deposit}) async {
-    final doc = FirebaseFirestore.instance.collection('users').doc(widget.password);
+    final doc =
+        FirebaseFirestore.instance.collection('users').doc(widget.password);
 
     final json = {
       'balance': FieldValue.increment(deposit),
@@ -133,10 +135,17 @@ class _MainMenuState extends State<MainMenu> {
                     height: 50,
                     width: 140,
                     child: ElevatedButton(
-                        onPressed: !widget.isChild ? () {
-                          addDeposit(deposit: 5000);
-                          setState(() {});
-                        } : null,
+                        onPressed: !widget.isChild
+                            ? () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DepositPage(
+                                              isChild: widget.isChild,
+                                              password: widget.password,
+                                            )));
+                              }
+                            : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: HexColor("#481cff"),
                           shape: RoundedRectangleBorder(
