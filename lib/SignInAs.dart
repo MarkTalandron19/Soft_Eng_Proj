@@ -19,33 +19,48 @@ class SignInAs extends StatelessWidget {
                 height: 300,
                 width: 300,
               ),
-              const SizedBox(
-                child: Text("Are you accessing as a:"),
-              ),
-              SizedBox(
-                height: 30,
-                width: 150,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LogInPage(isChild: true)));
-                  },
-                  child: const Text("Child"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: const SizedBox(
+                  child: Text(
+                    "Are you accessing as a:",
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 30,
-                width: 150,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LogInPage(isChild: false)));
-                  },
-                  child: const Text("Parent"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LogInPage(isChild: true)));
+                    },
+                    child: const Text("Child"),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LogInPage(isChild: false)));
+                    },
+                    child: const Text("Parent"),
+                  ),
                 ),
               ),
             ],
