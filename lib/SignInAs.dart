@@ -18,6 +18,9 @@ class SignInAs extends StatelessWidget {
               const SizedBox(
                 height: 300,
                 width: 300,
+                 child: Image(image: AssetImage(
+                  'assets/signin.png'),
+                  ),
               ),
               const Padding(
                 padding: EdgeInsets.fromLTRB(50, 0, 0, 0),

@@ -4,11 +4,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
 import 'MainMenu.dart';
 
-import 'Account.dart';
-import 'MainMenu.dart';
 
 class LogInPage extends StatefulWidget {
-  LogInPage({super.key, required this.isChild});
+  const LogInPage({super.key, required this.isChild});
   final bool isChild;
 
   @override
@@ -52,21 +50,35 @@ class _LogInPageState extends State<LogInPage> {
                     "Welcome",
                     style: TextStyle(
                       color: HexColor("3f60a0"),
-                      fontSize: 14,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 100,
-                  width: 300,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
+                  child: Text(
+                    "To start using Start Early, Sign in or Sign-up!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: HexColor("3f60a0"),
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
+                const Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 35, 20),
+                 child: Image(image: AssetImage(
+                  'assets/signin.png'),
+                  ),
+              ),
                 SizedBox(
                     width: 300,
                     child: TextField(
                       controller: userController,
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: "Email or UserName"),
+                          labelText: "Email or Username"),
                     )),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

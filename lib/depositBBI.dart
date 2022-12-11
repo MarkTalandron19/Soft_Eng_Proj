@@ -55,7 +55,8 @@ class _DepositState extends State<DepositBbi> {
                   'assets/bbi.png'),
                   height: 200.0,
                   width: 200.0,
-                  ),)
+                  ),
+                  )
                 ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
