@@ -43,11 +43,19 @@ class DepositPage extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 26.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 26.0),
                   child: SizedBox(
                     height: 65.0,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      
+                      onPressed: () {
+                        Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Deposit(
+                                isChild: isChild,
+                                password: password,
+                              )));},
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: Colors.white,
@@ -55,10 +63,15 @@ class DepositPage extends StatelessWidget {
                       child: Row(
                         children: const <Widget>[
                           SizedBox(
-                            width: 138.0,
+                            width: 5.0,
                           ),
+                          Image(
+                                image: AssetImage(
+                                  'assets/dbo.png'
+                                ),
+                              ),
                           Text(
-                            "Dank Bank Organization",
+                            "  Dank Bank Organization",
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Poppins',
@@ -77,15 +90,7 @@ class DepositPage extends StatelessWidget {
             SizedBox(
               height: 55.0,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Deposit(
-                                isChild: isChild,
-                                password: password,
-                              )));
-                },
+                onPressed: () {},
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(const Color(0xff481CFF)),
@@ -94,6 +99,7 @@ class DepositPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
                 ),
+
                 child: const SizedBox(
                   width: 290.0,
                   child: Text(
