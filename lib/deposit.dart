@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'depositetwo.dart';
+import 'depositDbo.dart';
 
 class DepositPage extends StatelessWidget {
   const DepositPage({super.key, required this.isChild, required this.password});
@@ -47,7 +47,6 @@ class DepositPage extends StatelessWidget {
                   child: SizedBox(
                     height: 65.0,
                     child: ElevatedButton(
-<<<<<<< HEAD
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -57,17 +56,6 @@ class DepositPage extends StatelessWidget {
                                       password: password,
                                     )));
                       },
-=======
-                      
-                      onPressed: () {
-                        Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Deposit(
-                                isChild: isChild,
-                                password: password,
-                              )));},
->>>>>>> main
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: Colors.white,
@@ -78,10 +66,8 @@ class DepositPage extends StatelessWidget {
                             width: 5.0,
                           ),
                           Image(
-                                image: AssetImage(
-                                  'assets/dbo.png'
-                                ),
-                              ),
+                            image: AssetImage('assets/dbo.png'),
+                          ),
                           Text(
                             "  Dank Bank Organization",
                             style: TextStyle(
@@ -94,6 +80,86 @@ class DepositPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 26.0),
+                      child: SizedBox(
+                        height: 65.0,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Deposit(
+                                          isChild: isChild,
+                                          password: password,
+                                        )));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Row(
+                            children: const <Widget>[
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Image(
+                                image: AssetImage('assets/bbi.png'),
+                              ),
+                              Text(
+                                "  Bank Bank International",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )),
+                Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 26.0),
+                      child: SizedBox(
+                        height: 65.0,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Deposit(
+                                          isChild: isChild,
+                                          password: password,
+                                        )));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Row(
+                            children: const <Widget>[
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Image(
+                                image: AssetImage('assets/lambank.png'),
+                              ),
+                              Text(
+                                "  Lambank",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )),
               ],
             ),
             const SizedBox(
@@ -111,7 +177,6 @@ class DepositPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
                 ),
-
                 child: const SizedBox(
                   width: 290.0,
                   child: Text(

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
-import 'depositone.dart';
+import 'deposit.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({super.key, required this.isChild, required this.password});

@@ -19,9 +19,9 @@ class SignInAs extends StatelessWidget {
                 height: 300,
                 width: 300,
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
-                child: const SizedBox(
+              const Padding(
+                padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: SizedBox(
                   child: Text(
                     "Are you accessing as a:",
                     style: TextStyle(

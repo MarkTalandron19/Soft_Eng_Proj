@@ -43,23 +43,32 @@ class _DepositState extends State<Deposit> {
           centerTitle: true,
           elevation: 0,
         ),
-        backgroundColor: Color.fromARGB(255, 253, 253, 253),
+        backgroundColor: const Color.fromARGB(255, 253, 253, 253),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20 , 20),
+                child: Center(child: 
+                Image(image: AssetImage(
+                  'assets/dbo.png'),
+                  height: 200.0,
+                  width: 200.0,
+                  ),)
+                ),
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 200, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextField(
                   controller: amountController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'PHP 0.00',
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 50, 0),
                 child: Text(
                   "Transfer Fee: -10.00 PHP",
@@ -82,7 +91,7 @@ class _DepositState extends State<Deposit> {
               //   ),
               // ),
               Padding(
-                padding: EdgeInsets.fromLTRB(35, 300, 0, 0),
+                padding: const EdgeInsets.fromLTRB(35, 300, 0, 0),
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
