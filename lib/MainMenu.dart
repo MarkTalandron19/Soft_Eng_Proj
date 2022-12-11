@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Account.dart';
 import 'deposit.dart';
+import 'eLoad.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({super.key, required this.isChild, required this.password});
@@ -45,6 +46,17 @@ class _MainMenuState extends State<MainMenu> {
   }
 
   Future addDeposit({required int deposit}) async {
+    final doc =
+        FirebaseFirestore.instance.collection('users').doc(widget.password);
+
+    final json = {
+      'balance': FieldValue.increment(deposit),
+    };
+
+    await doc.update(json);
+  }
+
+    Future deductDeposit({required int deposit}) async {
     final doc =
         FirebaseFirestore.instance.collection('users').doc(widget.password);
 
@@ -314,7 +326,7 @@ class _MainMenuState extends State<MainMenu> {
                   )
                 ),
               ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+              Padding(padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
               child:              SizedBox(
                 height: 61,
                 width: 350.0,
@@ -585,7 +597,17 @@ class _MainMenuState extends State<MainMenu> {
                   child: Material(
                     child: Center(
                       child: InkWell(
-                        onTap: widget.isChild ? () {} : null,
+                        onTap: !widget.isChild
+                            ? () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ELoadPage(
+                                              isChild: widget.isChild,
+                                              password: widget.password,
+                                            )));
+                              }
+                            : null,
                         child: Column(children: const [
                           Icon(
                             Icons.smartphone,

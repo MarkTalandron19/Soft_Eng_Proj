@@ -71,6 +71,9 @@ flutter:
     - assets/lambank.png
     - assets/signin.png
     - assets/jepoy.png
+    - assets/earth.png
+    - assets/stem.png
+    - assets/pldc.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
