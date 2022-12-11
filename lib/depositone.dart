@@ -47,7 +47,15 @@ class DepositPage extends StatelessWidget {
                   child: SizedBox(
                     height: 65.0,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Deposit(
+                                      isChild: isChild,
+                                      password: password,
+                                    )));
+                      },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: Colors.white,
@@ -77,15 +85,7 @@ class DepositPage extends StatelessWidget {
             SizedBox(
               height: 55.0,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Deposit(
-                                isChild: isChild,
-                                password: password,
-                              )));
-                },
+                onPressed: () {},
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(const Color(0xff481CFF)),
