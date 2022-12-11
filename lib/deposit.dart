@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'depositDbo.dart';
-
+import 'depositBBI.dart';
+import 'depositLambak.dart';
 class DepositPage extends StatelessWidget {
   const DepositPage({super.key, required this.isChild, required this.password});
 
@@ -51,7 +52,7 @@ class DepositPage extends StatelessWidget {
                         Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Deposit(
+                          builder: (context) => DepositDbo(
                                 isChild: isChild,
                                 password: password,
                               )));},
@@ -82,7 +83,7 @@ class DepositPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child:
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 26.0),
@@ -93,7 +94,7 @@ class DepositPage extends StatelessWidget {
                         Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Deposit(
+                          builder: (context) => DepositBbi(
                                 isChild: isChild,
                                 password: password,
                               )));},
@@ -126,7 +127,7 @@ class DepositPage extends StatelessWidget {
                 )
                ),
                                Padding(
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child:
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 26.0),
@@ -137,7 +138,7 @@ class DepositPage extends StatelessWidget {
                         Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Deposit(
+                          builder: (context) => DepositLambank(
                                 isChild: isChild,
                                 password: password,
                               )));},

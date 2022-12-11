@@ -3,16 +3,16 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'MainMenu.dart';
 
-class DepositDbo extends StatefulWidget {
-  const DepositDbo({super.key, required this.isChild, required this.password});
+class DepositBbi extends StatefulWidget {
+  const DepositBbi({super.key, required this.isChild, required this.password});
 
   final String password;
   final bool isChild;
   @override
-  State<DepositDbo> createState() => _DepositState();
+  State<DepositBbi> createState() => _DepositState();
 }
 
-class _DepositState extends State<DepositDbo> {
+class _DepositState extends State<DepositBbi> {
   int amount = 0;
   final amountController = TextEditingController();
   Future addDeposit({required int deposit}) async {
@@ -52,7 +52,7 @@ class _DepositState extends State<DepositDbo> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20 , 20),
                 child: Center(child: 
                 Image(image: AssetImage(
-                  'assets/dbo.png'),
+                  'assets/bbi.png'),
                   height: 200.0,
                   width: 200.0,
                   ),)
@@ -71,7 +71,7 @@ class _DepositState extends State<DepositDbo> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 50, 0),
                 child: Text(
-                  "Transfer Fee: 25.00 PHP",
+                  "Transfer Fee: 10.00 PHP",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Poppins',
