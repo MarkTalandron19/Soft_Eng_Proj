@@ -25,11 +25,11 @@ class _MainMenuState extends State<MainMenu> {
     }
     return null;
   }
-
+  
   Widget buildName(Account acc) {
     return Text("Hello, ${acc.getName}!",
         style: const TextStyle(
-          fontSize: 18,
+          fontSize: 25,
         ));
   }
 
@@ -74,7 +74,19 @@ class _MainMenuState extends State<MainMenu> {
                           ? const Center(
                               child: Text('No User'),
                             )
-                          : buildName(acc);
+                          : 
+                          Row( crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            const Image(image: AssetImage(
+                              'assets/jepoy.png'),
+                              height: 50,
+                              width: 50,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(5, 15, 0, 0),
+                                child: buildName(acc),
+                                ),
+                          ]
+                          );
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -83,12 +95,12 @@ class _MainMenuState extends State<MainMenu> {
                   }),
             ]),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Text(
               "Dashboard",
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 23,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
               ),
@@ -202,6 +214,8 @@ class _MainMenuState extends State<MainMenu> {
                 ],
               ),
             ),
+            Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -223,6 +237,157 @@ class _MainMenuState extends State<MainMenu> {
                         fontWeight: FontWeight.w300,
                       ),
                     ))
+              ],
+            ),
+            Column(
+              children: [
+              SizedBox(
+                height: 61,
+                width: 350.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Payment',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('P500.00',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                   Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('12/04/2022',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 146, 146, 146),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Details',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 78, 169, 255),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                  ],
+                  )
+                ),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+              child:              SizedBox(
+                height: 61,
+                width: 350.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Payment',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('P300.00',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                   Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('12/03/2022',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 146, 146, 146),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Details',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 78, 169, 255),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                  ],
+                  )
+                ),
+              ),)
               ],
             ),
             Row(
@@ -248,6 +413,158 @@ class _MainMenuState extends State<MainMenu> {
                     ))
               ],
             ),
+                        Column(
+              children: [
+              SizedBox(
+                height: 61,
+                width: 350.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Shappee',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('order-bh1c-s2fd ',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                   Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('11/21/2022',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 146, 146, 146),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Details',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 78, 169, 255),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                  ],
+                  )
+                ),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+              child:              SizedBox(
+                height: 61,
+                width: 350.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Lazalora',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('order-abcd-efgh ',
+                    style: TextStyle(
+                      fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 124, 124, 124),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                   Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('10/09/2022',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 146, 146, 146),
+                    )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    child: Text('Details',
+                    style: TextStyle(
+                      fontSize: 12,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 78, 169, 255),
+                    )
+                    )
+                  ),
+              ]
+                  ),
+                  ],
+                  )
+                ),
+              ),)
+              ],
+            ),
+            ],)
           ])),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
